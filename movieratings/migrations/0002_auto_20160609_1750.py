@@ -3,7 +3,10 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
+
 from movieratings.worker import add_movie_data
+from movieratings.worker import add_rater_data
+from movieratings.worker import add_rating_data
 
 class Migration(migrations.Migration):
 
@@ -12,5 +15,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(add_movie_data)
+        migrations.RunPython(add_movie_data),
+        migrations.RunPython(add_rater_data),
+        migrations.RunPython(add_rating_data)
     ]
