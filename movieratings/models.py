@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-
+import csv
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
@@ -28,16 +28,28 @@ class Movie(models.Model):
     war = models.IntegerField()
     western = models.IntegerField()
 
+    def __str__(self):
+        return self.title
+
 class Rater(models.Model):
     age = models.IntegerField()
     gender = models.CharField(max_length=1)
     occupation = models.CharField(max_length=50)
     zip = models.CharField(max_length=10)
 
+    def __str__(self):
+        return str(self.id)
+
 class Rating(models.Model):
     rater = models.ForeignKey(Rater)
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField()
     timestamp = models.IntegerField()
+
+    def __str__(self):
+        return str(self.rating)
+
+
+
 
 

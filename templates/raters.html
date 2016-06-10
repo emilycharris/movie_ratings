@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raters</title>
+</head>
+<body>
+    {% for rater in raters %}
+        <div>Rater ID: {{ rater }}</div>
+        <div>Gender: {{ rater.gender }}</div>
+        <div>Occupation: {{ rater.occupation }}</div>
+        <div>Zip Code: {{ rater.zip }}</div>
+    {% endfor %}
+
+    {% for rating in ratings %}
+        <p>Movie: {{ rating.movie }}<br>Rating: {{ rating.rating }}</p>
+    {% endfor %}
+</body>
+</html>
