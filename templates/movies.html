@@ -5,8 +5,16 @@
     <title>Movies</title>
 </head>
 <body>
-        {% for movie in movies %}
-            <p> <a href={{ movie.imdb_url }}>{{ movie }}</a> </p>
+
+
+{% for movie in movies %}
+    <h2> {{ movie }} </h2>
         {% endfor %}
+
+{%  for rating in ratings %}
+        <p>Rater ID: {{ rating.rater }} <br> Rating:{{ rating.rating }}</p>
+    {% endfor %}
+
+
 </body>
 </html>

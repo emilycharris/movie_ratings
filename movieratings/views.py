@@ -8,11 +8,14 @@ from movieratings.models import Rating
 def top_20_view(request):
     pass
 
+
 def movie_view(request, movie_id):
     context = {
-        "movies": (Movie.objects.filter(id=movie_id))
+        "movies": (Movie.objects.filter(id=movie_id)),
+        "ratings": (Rating.objects.filter(movie=movie_id))
     }
     return render(request, "movies.html", context)
+
 
 def rater_view(request, rater_id):
     context = {

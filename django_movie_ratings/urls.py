@@ -21,5 +21,5 @@ from movieratings import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^raters/(?P<rater_id>\w+)$', views.rater_view),
-    url(r'movies/(?P<movie_id>\w+)/$', views.movie_view)
+    url(r'^movies/(?P<movie_id>\w+)/$', views.movie_view)
 ]
