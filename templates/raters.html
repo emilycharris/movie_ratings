@@ -11,9 +11,11 @@
         <div>Occupation: {{ rater.occupation }}</div>
         <div>Zip Code: {{ rater.zip }}</div>
     {% endfor %}
+    <hr>
 
     {% for rating in ratings %}
-        <p>Movie: {{ rating.movie }}<br>Rating: {{ rating.rating }}</p>
+        <p>Movie: <a href='/movies/{{ rating.movie }}'>{{ rating.movie.title }}</a><br>Rating: {{ rating.rating }}</p>
+
     {% endfor %}
 </body>
 </html>

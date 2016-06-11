@@ -8,11 +8,12 @@
 
 
 {% for movie in movies %}
-    <h2> {{ movie }} </h2>
+    <h2> {{ movie.title }} </h2>
+    <h4>{{ average_ratings }}</h4>
         {% endfor %}
-
+<hr>
 {%  for rating in ratings %}
-        <p>Rater ID: {{ rating.rater }} <br> Rating:{{ rating.rating }}</p>
+        <p>Rater ID: <a href="/raters/{{ rating.rater }}">{{ rating.rater }}</a> <br> Rating: {{ rating.rating }}</p>
     {% endfor %}
 
 
