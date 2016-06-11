@@ -49,6 +49,11 @@ class Rating(models.Model):
     def __str__(self):
         return str(self.rating)
 
+class Avg_Rating(models.Model):
+    movie = models.ForeignKey(Movie)
+    count_ratings = models.IntegerField()
+    average_rating = models.FloatField()
+
 
 
 

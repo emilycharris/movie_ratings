@@ -9,12 +9,7 @@ from django.db.models import Avg
 
 
 def top_20_view(request):
-    context = {
-        "movies": list((Movie.objects.all())),
-        #"average_ratings": (Rating.objects.filter().aggregate(Avg('rating')))
-    }
-
-    #for movie in "movies":
+    pass
 
     return render(request, 'top_20.html', context)
 

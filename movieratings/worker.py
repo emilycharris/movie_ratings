@@ -1,4 +1,5 @@
 import csv
+from django.db.models import Avg
 
 def add_movie_data(apps, schema_editor):
     Movie = apps.get_model('movieratings', 'Movie')
@@ -61,3 +62,27 @@ def add_rating_data(apps, schema_editor):
                                   rater=rater,
                                   rating=row['rating'],
                                   timestamp=row['timestamp'])
+
+from django.db.models import Avg, Count
+
+
+from django.db.models import Avg, Count
+from movieratings.models import Avg_Rating
+
+def add_avg_rating(apps, schema_editor):
+    Movie = apps.get_model('movieratings', 'Movie')
+    Rating = apps.get_model('movieratings', "Rating")
+
+    movies = Movie.objects.all()
+
+    for movie in movies:
+        list_rating = Rating.objects.filter(movie=movie.id)
+        count_rating = Count(list_rating)
+        avg_rating = Avg(list_rating)
+
+        Avg_Rating.objects.create(movie=movies,
+                                  count_ratings=count_rating,
+                                  average_rating=avg_rating)
+
+
+    raise Exception("boom")

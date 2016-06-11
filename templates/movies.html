@@ -10,6 +10,8 @@
 {% for movie in movies %}
     <h2> {{ movie.title }} </h2>
     <h4>{{ average_ratings }}</h4>
+
+    <a href="{{ movie.imdb_url }}">IMDB</a>
         {% endfor %}
 <hr>
 {%  for rating in ratings %}
