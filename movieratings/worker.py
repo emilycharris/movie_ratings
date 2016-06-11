@@ -75,14 +75,15 @@ def add_avg_rating(apps, schema_editor):
 
     movies = Movie.objects.all()
 
-    for movie in movies:
-        list_rating = Rating.objects.filter(movie=movie.id)
-        count_rating = Count(list_rating)
-        avg_rating = Avg(list_rating)
+    for movie_item in movies:
+        avg_rating_dict = Rating.objects.filter(movie=movie_item.id
+                                            ).values('rating').aggregate(average_rating=Avg("rating"))
+        avg_rating = avg_rating_dict.get('average_rating')
 
-        Avg_Rating.objects.create(movie=movies,
-                                  count_ratings=count_rating,
-                                  average_rating=avg_rating)
+        count_rating_dict = Rating.objects.filter(movie=movie_item.id
+                                             ).values('rating').aggregate(count_rating=Count('rating'))
+        count_rating = count_rating_dict.get('count_rating')
+
 
 
     raise Exception("boom")
