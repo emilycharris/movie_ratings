@@ -14,19 +14,20 @@ def add_avg_rating(apps, schema_editor):
     movies = Movie.objects.all()
 
     for movie_item in movies:
+
+
         avg_rating_dict = Rating.objects.filter(movie=movie_item
-                                            ).values('rating').aggregate(average_rating=Avg("rating"))
+        ).values('rating').aggregate(average_rating=Avg("rating"))
         avg_rating = avg_rating_dict.get('average_rating')
 
         count_rating_dict = Rating.objects.filter(movie=movie_item
-                                                  ).values('rating').aggregate(count_rating=Count('rating'))
+        ).values('rating').aggregate(count_rating=Count('rating'))
         count_rating = count_rating_dict.get('count_rating')
 
-        #print(movie_item.title, avg_rating,count_rating)
-
-        Avg_Rating.objects.create(movie=movie_item,
-                                  count_ratings=count_rating,
-                                  average_rating=avg_rating)
+        print(movie_item.title, avg_rating, count_rating)
+        #Avg_Rating.objects.create(movie=movie_item,
+        #count_ratings=count_rating,
+        #average_rating=avg_rating)
 
     raise Exception("boom")
 
