@@ -54,6 +54,12 @@ class Avg_Rating(models.Model):
     count_ratings = models.IntegerField()
     average_rating = models.FloatField()
 
+    def __str__(self):
+        return str(self.average_rating)
+
+    @property
+    def sorted_set(self):
+        return self.average_rating.order_by('average_rating')
 
 
 

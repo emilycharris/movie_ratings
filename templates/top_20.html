@@ -5,12 +5,9 @@
     <title>Top 20 Movies</title>
 </head>
 <body>
-{% for movie in movies %}
-        <div>{{ movie }}</div>
-    {% endfor %}
 
     {% for rating in average_ratings %}
-        <p>{{ average_ratings.rating }}</p>
+        <p>{{ rating }}</p>
     {% endfor %}
 </body>
 </html>

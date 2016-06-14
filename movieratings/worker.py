@@ -67,11 +67,11 @@ from django.db.models import Avg, Count
 
 
 from django.db.models import Avg, Count
-from movieratings.models import Avg_Rating
 
 def add_avg_rating(apps, schema_editor):
     Movie = apps.get_model('movieratings', 'Movie')
     Rating = apps.get_model('movieratings', "Rating")
+    Avg_Rating = apps.get_model('movieratings', "Avg_Rating")
 
     movies = Movie.objects.all()
 
