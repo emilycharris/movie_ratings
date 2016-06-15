@@ -4,17 +4,11 @@
     <meta charset="UTF-8">
     <title>Top 20 Movies</title>
 </head>
-
 <body>
+    {% for rating in average_rating %}
+        <a href="/movies/{{ rating.movie }}">{{ rating.movie.title }}</a>
+        <p>{{ rating.average_rating }}</p>
 
-<div class="container">
-<h1>Top 20 Movies</h1>
-
-        <p>{% for rating in average_rating %}
-        {{ rating.average_rating }}
-        {% endfor %}</p>
-
-
-</div>
+    {% endfor %}
 </body>
 </html>
