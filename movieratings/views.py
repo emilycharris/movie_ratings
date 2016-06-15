@@ -7,11 +7,11 @@ from movieratings.models import Rating
 from movieratings.models import Avg_Rating
 
 
-def top_20_view(request):
+def index_view(request):
     context = {
-        "average_rating": (Avg_Rating.objects.all().order_by('-average_rating')[:20]),
+        "average_rating": Avg_Rating.objects.all().order_by('-average_rating')[:20],
     }
-    return render(request, 'top_20.html', context)
+    return render(request, 'index.html', context)
 
 
 

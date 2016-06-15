@@ -26,10 +26,16 @@ def add_avg_rating(apps, schema_editor):
 
         count_rating = count_rating_dict.get('count_rating')
 
+        if count_rating > 20:
+            avg_rating = avg_rating
+        else:
+            avg_rating = 0
+
         print(movie_item.title, avg_rating, count_rating)
+
         Avg_Rating.objects.create(movie=movie_item,
-        count_ratings=count_rating,
-        average_rating=avg_rating)
+        count_ratings=count_rating, average_rating=avg_rating)
+
 
     #raise Exception("boom")
 

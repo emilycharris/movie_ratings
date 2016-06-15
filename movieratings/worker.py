@@ -71,19 +71,30 @@ from django.db.models import Avg, Count
 def add_avg_rating(apps, schema_editor):
     Movie = apps.get_model('movieratings', 'Movie')
     Rating = apps.get_model('movieratings', "Rating")
-    Avg_Rating = apps.get_model('movieratings', "Avg_Rating")
+    Avg_Rating = apps.get_model('movieratings', 'Avg_Rating')
 
     movies = Movie.objects.all()
 
     for movie_item in movies:
-        avg_rating_dict = Rating.objects.filter(movie=movie_item.id
-                                            ).values('rating').aggregate(average_rating=Avg("rating"))
+
+
+        avg_rating_dict = Rating.objects.filter(movie=movie_item
+        ).values('rating').aggregate(average_rating=Avg("rating"))
+
         avg_rating = avg_rating_dict.get('average_rating')
 
-        count_rating_dict = Rating.objects.filter(movie=movie_item.id
-                                             ).values('rating').aggregate(count_rating=Count('rating'))
+        count_rating_dict = Rating.objects.filter(movie=movie_item
+        ).values('rating').aggregate(count_rating=Count('rating'))
+
         count_rating = count_rating_dict.get('count_rating')
 
+        weighted_avg = avg_rating * (count_rating * .1)
+        print(movie_item.title, avg_rating, count_rating, weighted_avg)
 
+
+        Avg_Rating.objects.create(movie=movie_item,
+        count_ratings=count_rating,
+        average_rating=avg_rating,
+        weighted_averaged=weighted_avg)
 
     raise Exception("boom")

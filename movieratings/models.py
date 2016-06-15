@@ -52,14 +52,9 @@ class Rating(models.Model):
 class Avg_Rating(models.Model):
     movie = models.ForeignKey(Movie)
     count_ratings = models.IntegerField()
-    average_rating = models.FloatField()
+    average_rating = models.DecimalField(max_digits=5, decimal_places=2)
 
-    def __str__(self):
-        return str(self.average_rating)
 
-    @property
-    def sorted_set(self):
-        return self.average_rating.order_by('average_rating')
 
 
 

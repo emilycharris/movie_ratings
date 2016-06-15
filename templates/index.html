@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Top 20 Movies</title>
 </head>
+
 <body>
 
+<div class="container">
+<h1>Top 20 Movies</h1>
+
+        <p>{% for rating in average_rating %}
+        {{ rating.average_rating }}
+        {% endfor %}</p>
+
+
+</div>
 </body>
 </html>
