@@ -1,14 +1,25 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Top 20 Movies</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
+<a href="index.html">Home</a>
+<h1>Top 20 Movies by Weighted Average</h1>
+<h5><em>Excludes movies with less than 20 reviews</em></h5>
     {% for rating in average_rating %}
-        <a href="/movies/{{ rating.movie }}">{{ rating.movie.title }}</a>
-        <p>{{ rating.average_rating }}</p>
+        <table class="table-condensed">
+        <tr>
+            <td><a href=/movies/{{ rating.movie }}>{{ rating.movie.title }}</a></td>
+            <td>{{ rating.average_rating }}</td>
+        </tr>
+        </table>
 
     {% endfor %}
+</div>
 </body>
 </html>
